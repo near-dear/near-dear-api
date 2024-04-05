@@ -4,6 +4,7 @@ import io.neardear.api.authentication.domain.Role
 import io.neardear.api.authentication.infrastructure.jwt.JwtTokenProvider
 import io.neardear.api.authentication.presentation.dto.LoginRequest
 import io.neardear.api.authentication.presentation.dto.LoginResponse
+import io.neardear.api.authentication.presentation.dto.SignUpRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -19,5 +20,10 @@ class AuthenticationApi(
     fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<LoginResponse> {
         jwtTokenProvider.generate(loginRequest.email, setOf(Role.USER))
         return ResponseEntity.ok(LoginResponse(loginRequest.email, loginRequest.email))
+    }
+
+    @PostMapping(SIGNUP)
+    fun signUp(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<Void> {
+        return ResponseEntity.ok().build()
     }
 }

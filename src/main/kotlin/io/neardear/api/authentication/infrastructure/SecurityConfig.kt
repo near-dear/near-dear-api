@@ -24,11 +24,4 @@ class SecurityConfig {
             .formLogin { it.disable() }
             .build()
     }
-
-    @Bean
-    fun webSecurityCustomizer(): WebSecurityCustomizer {
-        return WebSecurityCustomizer { web ->
-            web.ignoring().requestMatchers(PathRequest.toH2Console())
-        }
-    }
 }

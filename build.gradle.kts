@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.4"
     id("org.asciidoctor.jvm.convert") version "3.3.2"
+    id("com.google.cloud.tools.jib") version "3.4.1"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.spring") version "1.9.23"
     kotlin("plugin.jpa") version "1.9.23"
@@ -14,6 +15,31 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
+}
+
+
+jib {
+    from {
+        image = "eclipse-temurin:17-jre-focal"
+        platforms {
+            platform {
+                architecture = "${findProperty("jibArchitecture") ?: "amd64"}"
+                os = "linux"
+            }
+        }
+    }
+    to {
+        image = "near-dear-api"
+        tags = setOf("latest", if (project.version.toString().endsWith("-SNAPSHOT")) "snapshot" else project.version.toString())
+    }
+    container {
+        entrypoint = listOf("bash", "-c", "/entrypoint.sh")
+        ports = listOf("8080")
+    }
+    extraDirectories {
+        setPaths("src/main/docker/jib")
+        permissions.set(mapOf("/entrypoint.sh" to "755"))
+    }
 }
 
 repositories {
@@ -29,6 +55,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

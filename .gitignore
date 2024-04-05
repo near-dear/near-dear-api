@@ -38,3 +38,6 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+src/main/resources/application.yml
+src/main/docker/docker-compose.yml

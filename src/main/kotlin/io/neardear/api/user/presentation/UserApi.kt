@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(API_VERSION)
+@RequestMapping(USER_API_VERSION)
 class UserApi: UserSpecification {
     @GetMapping(MY_PAGE)
     override fun myPage(): ResponseEntity<MyPageResponse> {

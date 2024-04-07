@@ -1,12 +1,15 @@
-package io.neardear.api.product.presentation.dto
+package io.neardear.api.product.presentation
 
+import io.neardear.api.product.presentation.dto.ProductDetailResponse
+import io.neardear.api.product.presentation.dto.ProductRegisterRequest
+import io.neardear.api.product.presentation.dto.ProductsResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
 
-@Tag(name = "Product", description = "상품 목록 API")
+@Tag(name = "Product", description = "상품 도메인 API")
 interface ProductSpecification {
     @Operation(
         summary = "상품 목록 조회",

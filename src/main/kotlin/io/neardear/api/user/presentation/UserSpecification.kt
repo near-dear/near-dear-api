@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
 
-@Tag(name = "Authentication", description = "인증 API")
+@Tag(name = "User", description = "사용자 도메인 API")
 interface UserSpecification {
 
     @Operation(

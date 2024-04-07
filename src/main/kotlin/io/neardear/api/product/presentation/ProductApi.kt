@@ -1,9 +1,7 @@
 package io.neardear.api.product.presentation
 
-import io.neardear.api.authentication.presentation.API_VERSION
 import io.neardear.api.product.presentation.dto.ProductDetailResponse
 import io.neardear.api.product.presentation.dto.ProductRegisterRequest
-import io.neardear.api.product.presentation.dto.ProductSpecification
 import io.neardear.api.product.presentation.dto.ProductsResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDateTime
 
 @RestController
-@RequestMapping(API_VERSION)
+@RequestMapping(PRODUCT_API_VERSION)
 class ProductApi: ProductSpecification {
 
     @GetMapping

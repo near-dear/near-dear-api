@@ -9,5 +9,6 @@ data class ProductDetailResponse(
     val price: Int,
     val quantity: Int,
     val thumbNails: List<String>,
-    val createTime: LocalDateTime
+    val category: String,
+    val createTime: LocalDateTime,
 )

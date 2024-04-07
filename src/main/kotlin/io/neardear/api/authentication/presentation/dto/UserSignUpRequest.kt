@@ -1,6 +1,6 @@
 package io.neardear.api.authentication.presentation.dto
 
-data class SignUpRequest(
+data class UserSignUpRequest(
     val email: String,
     val password: String,
     val passwordConfirm: String,

@@ -4,7 +4,8 @@ import io.neardear.api.authentication.domain.Role
 import io.neardear.api.authentication.infrastructure.jwt.JwtTokenProvider
 import io.neardear.api.authentication.presentation.dto.LoginRequest
 import io.neardear.api.authentication.presentation.dto.LoginResponse
-import io.neardear.api.authentication.presentation.dto.SignUpRequest
+import io.neardear.api.authentication.presentation.dto.PartnerSignUpRequest
+import io.neardear.api.authentication.presentation.dto.UserSignUpRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -23,7 +24,12 @@ class AuthenticationApi(
     }
 
     @PostMapping(SIGNUP)
-    override fun signUp(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<Void> {
+    override fun signUp(@RequestBody userSignUpRequest: UserSignUpRequest): ResponseEntity<Void> {
+        return ResponseEntity.ok().build()
+    }
+
+    @PostMapping(SIGNUP_PARTNER)
+    override fun signUpMerchant(@RequestBody partnerSignUpRequest: PartnerSignUpRequest): ResponseEntity<Void> {
         return ResponseEntity.ok().build()
     }
 }

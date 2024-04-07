@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping(API_VERSION)
 class AuthenticationApi(
     private val jwtTokenProvider: JwtTokenProvider
-) {
+): AuthenticationSpecification {
     @PostMapping(LOGIN)
-    fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<LoginResponse> {
-        jwtTokenProvider.generate(loginRequest.email, setOf(Role.USER))
-        return ResponseEntity.ok(LoginResponse(loginRequest.email, loginRequest.email))
+    override fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<LoginResponse> {
+        val jwtTokens = jwtTokenProvider.generate(loginRequest.email, setOf(Role.USER))
+        return ResponseEntity.ok(LoginResponse(jwtTokens.accessToken, jwtTokens.refreshToken))
     }
 
     @PostMapping(SIGNUP)
-    fun signUp(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<Void> {
+    override fun signUp(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<Void> {
         return ResponseEntity.ok().build()
     }
 }

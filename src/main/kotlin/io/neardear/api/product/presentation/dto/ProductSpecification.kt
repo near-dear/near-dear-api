@@ -17,6 +17,12 @@ interface ProductSpecification {
     fun getProducts(page: Int, size: Int): ResponseEntity<List<ProductsResponse>>
 
     @Operation(
+        summary = "상품 등록",
+        description = "상품을 등록하는 EndPoint를 제공합니다.")
+    @ApiResponse(responseCode = "201", description = "상품 등록 성공")
+    fun registerProduct(productRegisterRequest: ProductRegisterRequest): ResponseEntity<Void>
+
+    @Operation(
         summary = "상품 상세 조회",
         description = "상품 상세를 조회하는 EndPoint를 제공합니다.")
     @ApiResponse(responseCode = "200", description = "상품 상세 조회 성공")

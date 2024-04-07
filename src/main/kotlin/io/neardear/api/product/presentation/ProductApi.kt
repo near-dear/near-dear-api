@@ -1,6 +1,9 @@
 package io.neardear.api.product.presentation
 
 import io.neardear.api.authentication.presentation.API_VERSION
+import io.neardear.api.product.presentation.dto.ProductDetailResponse
+import io.neardear.api.product.presentation.dto.ProductSpecification
+import io.neardear.api.product.presentation.dto.ProductsResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -23,7 +26,8 @@ class ProductApi: ProductSpecification {
 
     @GetMapping("/{productTsId}")
     override fun getProductDetail(@PathVariable productTsId: Long): ResponseEntity<ProductDetailResponse> {
-        return ResponseEntity.ok(ProductDetailResponse(
+        return ResponseEntity.ok(
+            ProductDetailResponse(
             "상점1",
             "상품1",
             "지역1",
@@ -31,6 +35,7 @@ class ProductApi: ProductSpecification {
             1,
             listOf("이미지1", "이미지2", "이미지3"),
             LocalDateTime.of(2024, 4, 8, 12, 10, 12)
-        ))
+        )
+        )
     }
 }

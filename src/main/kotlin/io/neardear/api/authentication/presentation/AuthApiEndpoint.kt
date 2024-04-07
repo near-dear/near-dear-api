@@ -1,6 +1,6 @@
 package io.neardear.api.authentication.presentation
 
-const val API_VERSION = "/v1"
+const val API_VERSION = "/v1/auth"
 const val LOGIN = "/login"
 const val SIGNUP = "/signup"
 const val LOGOUT = "/logout"

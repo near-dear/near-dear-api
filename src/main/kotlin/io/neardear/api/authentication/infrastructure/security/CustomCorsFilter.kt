@@ -16,6 +16,9 @@ class CustomCorsFilter : CorsFilter(configurationSource()) {
             config.allowedMethods = listOf("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
             val source = UrlBasedCorsConfigurationSource()
             source.registerCorsConfiguration("/**", config)
+            source.registerCorsConfiguration("/v1/**", config)
+            source.registerCorsConfiguration("/v1/auth/**", config)
+            source.registerCorsConfiguration("/v1/product/**", config)
             return source
         }
     }

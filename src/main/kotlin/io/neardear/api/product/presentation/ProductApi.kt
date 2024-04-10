@@ -26,7 +26,7 @@ class ProductApi: ProductSpecification {
 
     @PostMapping
     override fun registerProduct(productRegisterRequest: ProductRegisterRequest): ResponseEntity<Void> {
-        return ResponseEntity.ok().build()
+        return ResponseEntity.noContent().build()
     }
 
     @GetMapping("/{productTsId}")

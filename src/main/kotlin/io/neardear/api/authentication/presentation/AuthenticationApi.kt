@@ -25,11 +25,11 @@ class AuthenticationApi(
 
     @PostMapping(SIGNUP)
     override fun signUp(@RequestBody userSignUpRequest: UserSignUpRequest): ResponseEntity<Void> {
-        return ResponseEntity.ok().build()
+        return ResponseEntity.noContent().build()
     }
 
     @PostMapping(SIGNUP_PARTNER)
     override fun signUpMerchant(@RequestBody partnerSignUpRequest: PartnerSignUpRequest): ResponseEntity<Void> {
-        return ResponseEntity.ok().build()
+        return ResponseEntity.noContent().build()
     }
 }

@@ -22,7 +22,7 @@ interface ProductSpecification {
     @Operation(
         summary = "상품 등록",
         description = "상품을 등록하는 EndPoint를 제공합니다.")
-    @ApiResponse(responseCode = "201", description = "상품 등록 성공")
+    @ApiResponse(responseCode = "204", description = "상품 등록 성공")
     fun registerProduct(productRegisterRequest: ProductRegisterRequest): ResponseEntity<Void>
 
     @Operation(

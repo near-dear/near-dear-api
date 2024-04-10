@@ -22,13 +22,14 @@ class SecurityConfig {
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http
             .csrf { it.disable() }
+            .cors { it.disable() }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { configurer ->
                 configurer
                     .anyRequest().permitAll() // TODO mock api 작성 이후에 api endpoint 인가 설정 적용하기
             }
             .formLogin { it.disable() }
-//            .addFilterBefore(CustomCorsFilter(), UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterBefore(CustomCorsFilter(), UsernamePasswordAuthenticationFilter::class.java)
             .build()
     }
 }

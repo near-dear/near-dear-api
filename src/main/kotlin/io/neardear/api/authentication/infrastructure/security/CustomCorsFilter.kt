@@ -10,7 +10,7 @@ class CustomCorsFilter : CorsFilter(configurationSource()) {
         private fun configurationSource(): UrlBasedCorsConfigurationSource {
             val config = CorsConfiguration()
             config.allowCredentials = true
-            config.addAllowedOrigin("*")
+            config.allowedOriginPatterns = listOf("*")
             config.addAllowedHeader("*")
             config.maxAge = 36000L
             config.allowedMethods = listOf("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")

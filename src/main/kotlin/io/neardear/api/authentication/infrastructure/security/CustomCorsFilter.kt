@@ -10,10 +10,10 @@ class CustomCorsFilter : CorsFilter(configurationSource()) {
         private fun configurationSource(): UrlBasedCorsConfigurationSource {
             val config = CorsConfiguration()
             config.allowCredentials = true
-            config.allowedOriginPatterns = listOf("http://localhost:3000")
-            config.addAllowedHeader("*")
+            config.setAllowedOriginPatterns(listOf("*"))
+            config.allowedHeaders = listOf("*")
             config.maxAge = 36000L
-            config.allowedMethods = listOf("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
+            config.allowedMethods = listOf("GET","POST","PUT","PATCH","OPTIONS","DELETE")
             val source = UrlBasedCorsConfigurationSource()
             source.registerCorsConfiguration("/**", config)
             source.registerCorsConfiguration("/v1/**", config)

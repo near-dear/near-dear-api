@@ -28,7 +28,7 @@ class SecurityConfig {
                     .anyRequest().permitAll() // TODO mock api 작성 이후에 api endpoint 인가 설정 적용하기
             }
             .formLogin { it.disable() }
-            .addFilterBefore(CustomCorsFilter(), UsernamePasswordAuthenticationFilter::class.java)
+//            .addFilterBefore(CustomCorsFilter(), UsernamePasswordAuthenticationFilter::class.java)
             .build()
     }
 }
